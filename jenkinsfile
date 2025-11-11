@@ -1,17 +1,20 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'Maven 3.9.9'
+    }
+
     environment {
         SERVER_IP    = '35.90.85.148'
         SSH_CRED_ID  = 'node-app-key'
         TOMCAT_PATH  = '/var/lib/tomcat10/webapps'
         TOMCAT_SVC   = 'tomcat10'
-    }
 
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/Abhinandan-58/Jenkins-CICD-Maven-Project.git'
+                git branch: 'main', url: 'https://github.com/Abhinandan-58/Jenkins-CICD-With-Java-.git'
             }
         }
 
@@ -47,4 +50,5 @@ pipeline {
             echo "Deployment failed."
         }
     }
+}
 }
